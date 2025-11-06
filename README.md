@@ -1,13 +1,13 @@
 # 🔬 Breast Cancer Detection Project
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url-here.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://breast-cancer-detection-ss.streamlit.app/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive machine learning project for breast cancer detection using the Wisconsin Diagnostic Breast Cancer (WDBC) dataset. This project implements multiple classification algorithms with proper preprocessing, feature selection, and model evaluation techniques.
 
 ## 🌐 **Live Demo**
-**Try the app:** [Breast Cancer Detection App](https://your-app-url-here.streamlit.app)
+**Try the app:** [Breast Cancer Detection App](https://breast-cancer-detection-ss.streamlit.app/)
 
 ## 🎯 **Key Results**
 - **Accuracy:** 96.5%
@@ -41,25 +41,22 @@ For each base measurement, three statistics are computed:
 - **Standard Error** (features 10-19)
 - **Worst/Largest** (mean of three largest values, features 20-29)
 
-## 🏗️ Project Structure
+## 📊 **Project Structure**
 
 ```
 breast-cancer-detection/
-├── data/
-│   ├── raw/                    # Original dataset files
-│   │   ├── wdbc.data          # Raw data file
-│   │   └── wdbc.names         # Dataset description
-│   └── processed/             # Processed datasets (generated)
-├── notebooks/
-│   ├── 01_eda.ipynb          # Exploratory Data Analysis
-│   ├── 02_preprocessing.ipynb # Data preprocessing
-│   └── 03_modeling.ipynb     # Model training and evaluation
+├── app/
+│   └── streamlit_app.py     # 🌐 Web application
 ├── src/
-│   ├── data_loader.py        # Data loading utilities
-│   ├── preprocessing.py      # Preprocessing pipelines
-│   └── models.py            # Model configurations
-├── requirements.txt          # Python dependencies
-└── README.md               # Project documentation
+│   ├── train.py            # 🏋️ Model training
+│   ├── evaluate.py         # 📊 Model evaluation
+│   ├── explainability.py   # 🔍 Model interpretability
+│   └── ...                 # Other utilities
+├── models/
+│   └── final_model.joblib  # 🤖 Trained model
+├── outputs/                # 📈 Results and visualizations
+├── notebooks/              # 📓 Jupyter notebooks
+└── data/                   # 📁 Dataset
 ```
 
 ## 🚀 Getting Started
@@ -206,66 +203,16 @@ full_grids = get_hyperparameter_grids()
 quick_grids = get_quick_hyperparameter_grids()
 ```
 
-## 📊 Expected Results
-
-Based on the literature and dataset characteristics, you can expect:
-
-- **Baseline accuracy**: 85-90% with simple models
-- **Optimized accuracy**: 95-98% with proper preprocessing and tuning
-- **Key features**: Worst area, worst smoothness, mean texture typically most important
-- **Class imbalance**: ~63% benign, ~37% malignant (moderate imbalance)
-
-## 🏥 Clinical Relevance
-
-This project demonstrates machine learning applications in medical diagnosis:
-
-- **High sensitivity**: Minimize false negatives (missed cancer cases)
-- **Balanced specificity**: Reduce false positives (unnecessary procedures)
-- **Interpretability**: Understand which features drive predictions
-- **Reliability**: Robust models with confidence estimates
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
 - **Dataset**: Wisconsin Diagnostic Breast Cancer (WDBC) dataset from UCI ML Repository
-- **Original creators**: Dr. William H. Wolberg, W. Nick Street, and Olvi L. Mangasarian
-- **Institution**: University of Wisconsin, Clinical Sciences Center
-
-## 📚 References
-
-1. W.N. Street, W.H. Wolberg and O.L. Mangasarian. Nuclear feature extraction for breast tumor diagnosis. IS&T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993.
-
-2. O.L. Mangasarian, W.N. Street and W.H. Wolberg. Breast cancer diagnosis and prognosis via linear programming. Operations Research, 43(4), pages 570-577, July-August 1995.
-
-3. W.H. Wolberg, W.N. Street, and O.L. Mangasarian. Machine learning techniques to diagnose breast cancer from fine-needle aspirates. Cancer Letters 77 (1994) 163-171.
 
 ## 🚀 **Deployment**
 
-### Deploy to Streamlit Community Cloud
+### Deployed on Streamlit Community Cloud
+Application link [Breast Cancer Detection](https://breast-cancer-detection-ss.streamlit.app/)
 
-1. Fork this repository
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Click "New app" and connect your GitHub repo
-4. Set main file path to: `app/streamlit_app.py`
-5. Click "Deploy!"
-
-### Deploy to Hugging Face Spaces
-
-1. Go to [huggingface.co/spaces](https://huggingface.co/spaces)
-2. Create new Space with Streamlit SDK
-3. Upload files or connect GitHub repo
-4. Your app will be live instantly!
 
 ### Local Development
 
@@ -283,33 +230,3 @@ python src/train.py
 # Run the Streamlit app
 streamlit run app/streamlit_app.py
 ```
-
-## 📊 **Project Structure**
-
-```
-breast-cancer-detection/
-├── app/
-│   └── streamlit_app.py     # 🌐 Web application
-├── src/
-│   ├── train.py            # 🏋️ Model training
-│   ├── evaluate.py         # 📊 Model evaluation
-│   ├── explainability.py   # 🔍 Model interpretability
-│   └── ...                 # Other utilities
-├── models/
-│   └── final_model.joblib  # 🤖 Trained model
-├── outputs/                # 📈 Results and visualizations
-├── notebooks/              # 📓 Jupyter notebooks
-└── data/                   # 📁 Dataset
-```
-
-## 🤝 **Contributing**
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## ⚠️ **Disclaimer**
-
-**Note**: This project is for educational and research purposes. Any clinical applications should involve medical professionals and proper validation studies.
