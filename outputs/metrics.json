@@ -1,0 +1,11 @@
+{
+  "metrics": {
+    "accuracy": 0.9649122807017544,
+    "precision": 0.9857142857142858,
+    "recall": 0.9583333333333334,
+    "f1_score": 0.971830985915493,
+    "roc_auc": 0.9953703703703703,
+    "pr_auc": 0.997111572671604
+  },
+  "classification_report": "              precision    recall  f1-score   support\n\n      Benign       0.93      0.98      0.95        42\n   Malignant       0.99      0.96      0.97        72\n\n    accuracy                           0.96       114\n   macro avg       0.96      0.97      0.96       114\nweighted avg       0.97      0.96      0.97       114\n"
+}
