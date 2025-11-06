@@ -33,10 +33,10 @@ from data_loader import load_data
 
 # Page configuration with modern theme
 st.set_page_config(
-    page_title="Breast Cancer Detection | Advanced Medical Diagnostics",
+    page_title="AI Cancer Detection | Advanced Medical Diagnostics",
     page_icon="🧬",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
     menu_items={
         'Get Help': 'https://github.com/yourusername/breast-cancer-detection',
         'Report a bug': 'https://github.com/yourusername/breast-cancer-detection/issues',
@@ -409,6 +409,16 @@ st.markdown("""
         margin-bottom: 1rem;
     }
     
+    /* Sidebar Enhancement */
+    .css-1d391kg {
+        padding-top: 1rem;
+    }
+    
+    /* Ensure sidebar toggle is always accessible */
+    .css-1rs6os {
+        width: auto;
+    }
+    
     /* Hide Streamlit Branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
@@ -607,6 +617,10 @@ def create_single_sample_input(feature_stats: Dict[str, Dict[str, float]],
                     </div>
                     """, unsafe_allow_html=True)
                     
+                    # Create unique key based on mode and feature to avoid duplicates
+                    mode_prefix = "simple" if use_top_features else "advanced"
+                    unique_key = f"{mode_prefix}_input_{feature.replace(' ', '_').replace('-', '_')}"
+                    
                     value = st.number_input(
                         label="",
                         min_value=stats['min'],
@@ -615,7 +629,7 @@ def create_single_sample_input(feature_stats: Dict[str, Dict[str, float]],
                         step=(stats['max'] - stats['min']) / 100,
                         format="%.4f",
                         help=f"📊 Range: {stats['min']:.2f} - {stats['max']:.2f} | 📈 Mean: {stats['mean']:.2f} | 📉 Std: {stats['std']:.2f}",
-                        key=f"input_{feature}",
+                        key=unique_key,
                         label_visibility="collapsed"
                     )
                     input_data[feature] = value
@@ -1149,6 +1163,40 @@ def create_modern_sidebar():
 
 def main():
     """Main Streamlit application with modern UI."""
+    
+    # Add floating sidebar toggle and instructions
+    st.markdown("""
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                    color: white; padding: 10px 15px; border-radius: 25px; 
+                    font-size: 13px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                    cursor: pointer; transition: all 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.05)'"
+             onmouseout="this.style.transform='scale(1)'"
+             onclick="document.querySelector('[data-testid=collapsedControl]')?.click()">
+            <i class="fas fa-bars" style="margin-right: 8px;"></i>
+            <strong>Toggle Sidebar</strong>
+        </div>
+        <div style="margin-top: 10px; background: rgba(255,255,255,0.95); 
+                    padding: 8px 12px; border-radius: 15px; font-size: 11px;
+                    color: #374151; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <i class="fas fa-keyboard" style="margin-right: 5px; color: #667eea;"></i>
+            Keyboard: Press <strong>[</strong> key
+        </div>
+    </div>
+    
+    <script>
+    // Add keyboard shortcut for sidebar toggle
+    document.addEventListener('keydown', function(e) {
+        if (e.key === '[') {
+            const sidebarToggle = document.querySelector('[data-testid=collapsedControl]');
+            if (sidebarToggle) {
+                sidebarToggle.click();
+            }
+        }
+    });
+    </script>
+    """, unsafe_allow_html=True)
     
     # Create modern header
     create_modern_header()
