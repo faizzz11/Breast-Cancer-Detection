@@ -33,7 +33,7 @@ from data_loader import load_data
 
 # Page configuration with modern theme
 st.set_page_config(
-    page_title="AI Cancer Detection | Advanced Medical Diagnostics",
+    page_title="Breast Cancer Detection | Advanced Medical Diagnostics",
     page_icon="🧬",
     layout="wide",
     initial_sidebar_state="expanded",
